@@ -16,7 +16,7 @@ public class BaseClass {
 	  driver = new ChromeDriver();
 	  driver.get("https://groceryapp.uniqassosiates.com/admin/login");
 	  driver.manage().window().maximize();
-	  driver.manage().timeouts().implicitlyWait(Duration.ofMillis(100));
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
   }
 
   @AfterMethod
