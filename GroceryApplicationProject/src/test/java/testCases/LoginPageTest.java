@@ -1,44 +1,50 @@
 package testCases;
 
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import elementRepository.HomePage;
 import elementRepository.LoginPage;
 
 public class LoginPageTest extends BaseClass {
 
-	LoginPage login;
+	LoginPage loginpage;
+	HomePage homePage;
 
 
 	@Test
-	public void validDataLogin() 
+	public void validDataLogin()
 	{
-		login = new LoginPage(driver);
-		login.sendUsername();
-		login.sendPassword();
-		login.signIn();
-		System.out.println("ValidDataLogin Method");
+		loginpage = new LoginPage(driver);
+		homePage = new HomePage(driver);
+		loginpage.sendUsername("admin");
+		loginpage.sendPassword("admin");
+		loginpage.signIn();
+		String actual = homePage.getDashboardText();
+		System.out.println("Successful Login: " + actual);
+		String expected = "Dashboard";
+		Assert.assertEquals(actual, expected, "Home Page text displayed upon successful login.");
 	}
 
-	public void inValidDataLogin()
-	{
-		login = new LoginPage(driver);
-		login.inValidSignIn("test", "test");
-		System.out.println("inValidDataLogin Method");
-	}
-
-
-	
 	@Test(dataProvider = "dp")
-	public void inValidUsernameLogin(String username, String password)
+	public void inValidDataLogin(String userName, String password) 
 	{
-		login = new LoginPage(driver);
-		login.inValidUserSign(username,password);
-		System.out.println("inValidUsernameLogin Method with username: " + username + " and password: " + password);
+		loginpage = new LoginPage(driver);
+		loginpage.sendUsername(userName);
+		loginpage.sendPassword(password);
+		loginpage.signIn();
+		String actual = loginpage.getErrorMessage();
+		System.out.println("Login Error Message: "+actual);
+		String expected = "Alert!";
+		Assert.assertEquals(actual, expected, "The login message is not as expected.");
 	}
+
 	@DataProvider
 	public Object[][] dp() {
 		return new Object[][] {
-			{"abc", "apple" }, {"efd", "ball"}, {"cat", "cat"}, {"admin","admin"}};
+			{"admin", "apple" }, {"efd", "admin"}, {"admi","admi"}};
 	}
+
+
 }
