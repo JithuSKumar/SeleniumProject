@@ -1,13 +1,13 @@
-package testCases;
+package stepFiles;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import elementRepository.HomePage;
-import elementRepository.LoginPage;
+import pageFiles.HomePage;
+import pageFiles.LoginPage;
 
-public class LoginPageTest extends BaseClass {
+public class LoginPageStep extends BaseClassStep {
 
 	LoginPage loginpage;
 	HomePage homePage;

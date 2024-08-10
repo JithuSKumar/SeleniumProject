@@ -1,4 +1,4 @@
-package testCases;
+package stepFiles;
 
 import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 
-public class BaseClass {
+public class BaseClassStep {
 	
 	WebDriver driver;
 	
@@ -16,11 +16,14 @@ public class BaseClass {
 	  driver = new ChromeDriver();
 	  driver.get("https://groceryapp.uniqassosiates.com/admin/login");
 	  driver.manage().window().maximize();
-	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+	  driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(100));
   }
 
   @AfterMethod
   public void afterMethod() {
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+	  driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(100));
 	  driver.close();
   }
 
