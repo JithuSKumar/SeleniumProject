@@ -95,8 +95,8 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 		adminUserCreationPage.fetchingTheFirstEntryinTable();
 		adminUserCreationPage.deletingTheFirstUser();
 		String actualValueString = adminUserCreationPage.fetchingTheFirstEntryinTable();
-		String expectedValue = adminUserCreationPage.fetchingTheFirstEntryinTable();
-		Assert.assertEquals(actualValueString, expectedValue, "New User deletion wasn't success.");
+		String expectedValue = ExcelUtility.getString(1, 0,"AdminUserCreation");
+		Assert.assertNotEquals(actualValueString, expectedValue, "New User deletion wasn't success.");
 	}
 
 
