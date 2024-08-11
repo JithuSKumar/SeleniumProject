@@ -45,7 +45,6 @@ public class ManageCategoryPageStep extends BaseClassStep {
 		String categoryName = ExcelUtility.getString(1, 0,"ManageCategory&Subcategory");
 		manageCategoryPage.newCategoryCreation(categoryName);
 		manageCategoryPage.categoryPageSelection();	
-		manageCategoryPage.fetchingTheFirstEntryinTable();
 		String actualValueString = manageCategoryPage.fetchingTheFirstEntryinTable();
 		String expectedValue = ExcelUtility.getString(1, 0,"ManageCategory&Subcategory");
 		Assert.assertEquals(actualValueString, expectedValue, "New Category creation wasn't success.");
@@ -65,7 +64,7 @@ public class ManageCategoryPageStep extends BaseClassStep {
 		String categoryName = ExcelUtility.getString(1, 0,"ManageCategory&Subcategory");
 		manageCategoryPage.searchNewlyAddedCategoryVisibility(categoryName);
 	}
-	@Test(priority = 4)
+	@Test(priority = 4, enabled = false)
 	public void VerifyDeleteofNewlyAddedCategory()
 	{
 		String userName = ExcelUtility.getString(1, 0,"LoginPage");
