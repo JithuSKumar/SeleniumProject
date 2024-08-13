@@ -18,6 +18,7 @@ public class ManageCategoryPage {
 	GeneralUtilities generaUtility = new GeneralUtilities();
 	WaitUtilities waitUtility = new WaitUtilities();
 	FileUploadUtilities fileUploadUtility = new FileUploadUtilities();
+	String categoryNameRandomString;
 
 	public ManageCategoryPage(WebDriver driver)
 	{
@@ -55,7 +56,7 @@ public class ManageCategoryPage {
 	public void newCategoryCreation(String categoryName) throws AWTException
 	{
 		newCategoryCreationElement.click();
-		categoryNameElement.sendKeys(categoryName);
+		categoryNameElement.sendKeys(categoryName + generaUtility.generateCurrentDateAndTime());
 		draggingElement.click();
 		fileUploadUtility.fileUploadUsingSendKeys(uploadImagElement, generaUtility.IMAGEFILEFORMANAGECATEGORYCATEGORYPAGE);
 		categorySaveElement.click();
@@ -74,5 +75,16 @@ public class ManageCategoryPage {
 		firstEntryDeletElement.click();
 		waitUtility.waitForAlterIsPresent(driver);
 		generaUtility.alertHandlingaccept(driver);
+	}
+	
+	public void generateRandomUser(String categoryName)
+	{
+		String categoryNameRandomString= categoryName + generaUtility.generateCurrentDateAndTime();
+		this.categoryNameRandomString = categoryNameRandomString;
+	}
+	
+	public String readRandomCategoryNameString()
+	{
+		return categoryNameRandomString;
 	}
 }

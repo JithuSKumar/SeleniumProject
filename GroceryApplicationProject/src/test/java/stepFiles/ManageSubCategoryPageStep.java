@@ -12,11 +12,12 @@ public class ManageSubCategoryPageStep extends BaseClassStep {
 	LoginPage loginpage;
 	ManageSubCategoryPage manageSubCategoryPage;
 	
+	String userName = ExcelUtility.getString(1, 0,"LoginPage");
+	String password = ExcelUtility.getString(1, 1,"LoginPage");
+	
 	@Test (priority = 1)
 	public void verifyIfCategoryListisLoaded()
 	{
-		String userName = ExcelUtility.getString(1, 0,"LoginPage");
-		String password = ExcelUtility.getString(1, 1,"LoginPage");
 		loginpage = new LoginPage(driver);
 		manageSubCategoryPage = new ManageSubCategoryPage(driver);
 		loginpage.sendUsername(userName);
@@ -30,8 +31,6 @@ public class ManageSubCategoryPageStep extends BaseClassStep {
 	@Test (priority = 2)
 	public void verifyCreationofNewSubCategor() 
 	{
-		String userName = ExcelUtility.getString(1, 0,"LoginPage");
-		String password = ExcelUtility.getString(1, 1,"LoginPage");
 		loginpage = new LoginPage(driver);
 		manageSubCategoryPage = new ManageSubCategoryPage(driver);
 		loginpage.sendUsername(userName);

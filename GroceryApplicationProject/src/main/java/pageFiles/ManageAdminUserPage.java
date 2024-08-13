@@ -49,7 +49,7 @@ WaitUtilities waitUtility = new WaitUtilities();
 	public boolean isAdminExistingUserListVisible() throws InterruptedException 
 	{
 		moreInfoOfAdminUserElement.click();
-		waitUtility.wait(20);
+		//waitUtility.wait(20);
 		return newButtonElement.isDisplayed();
 	}
 	
