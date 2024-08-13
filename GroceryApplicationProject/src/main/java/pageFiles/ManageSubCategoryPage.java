@@ -30,6 +30,7 @@ public class ManageSubCategoryPage {
 	@FindBy(xpath = "//input[@type='text']") WebElement newSubCategoryNameElement;
 	@FindBy(xpath = "//input[@type='file']") WebElement subCategoryImageElement;
 	@FindBy(xpath = "//button[@type='submit']") WebElement saveElement;
+	@FindBy(xpath ="//div[@class='alert alert-success alert-dismissible']") WebElement successMessageElement;
 	
 	public boolean subCategoryPageSelection() 
 	{
@@ -44,9 +45,12 @@ public class ManageSubCategoryPage {
 		manageCategoryIconElement.click();
 		subCategoryElement.click();
 		newSubCategoryCreationElement.click();
+		waitUtility.waitForElement(driver, categoryDropdownElement);
 		generaUtility.selectDropdownbyText(categoryDropdownElement, CategoryType);
 		newSubCategoryNameElement.sendKeys(subCategoryName);
 		fileUploadUtility.fileUploadUsingSendKeys(subCategoryImageElement, generaUtility.IMAGEFILEFORMANAGECATEGORYCATEGORYPAGE);
 		saveElement.click();
+		waitUtility.waitForElement(driver, successMessageElement);
+		
 	}
 }

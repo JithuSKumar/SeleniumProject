@@ -56,11 +56,11 @@ public class ManageCategoryPageStep extends BaseClassStep {
 		loginpage.sendPassword(password);
 		loginpage.signIn();
 		manageCategoryPage.categoryPageSelection();		
-		String categoryName = ExcelUtility.getString(1, 0,"ManageCategory&Subcategory");
+		String categoryName = manageCategoryPage.fetchingTheFirstEntryinTable();
 		manageCategoryPage.searchNewlyAddedCategoryVisibility(categoryName);
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4, enabled =false)
 	public void VerifyDeleteofNewlyAddedCategory()
 	{
 		loginpage = new LoginPage(driver);

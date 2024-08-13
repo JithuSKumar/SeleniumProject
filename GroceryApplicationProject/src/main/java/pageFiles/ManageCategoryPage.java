@@ -55,8 +55,10 @@ public class ManageCategoryPage {
 	}	
 	public void newCategoryCreation(String categoryName) throws AWTException
 	{
+		String generatedCategoryName = categoryName + generaUtility.generateCurrentDateAndTime();
+	    categoryNameRandomString = generatedCategoryName;
 		newCategoryCreationElement.click();
-		categoryNameElement.sendKeys(categoryName + generaUtility.generateCurrentDateAndTime());
+		categoryNameElement.sendKeys(generatedCategoryName);
 		draggingElement.click();
 		fileUploadUtility.fileUploadUsingSendKeys(uploadImagElement, generaUtility.IMAGEFILEFORMANAGECATEGORYCATEGORYPAGE);
 		categorySaveElement.click();
