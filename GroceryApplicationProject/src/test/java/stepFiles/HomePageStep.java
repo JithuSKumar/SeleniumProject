@@ -14,13 +14,13 @@ public class HomePageStep extends BaseClassStep {
 	
 	LoginPage loginpage;
 	HomePage homePage;
+	
+	String userName = ExcelUtility.getString(1, 0,"LoginPage");
+	String password = ExcelUtility.getString(1, 1,"LoginPage");
 
 	@Test
 	public void verifyTheUserAbleToLoginWithValidCredentials()
 	{
-		String userName = ExcelUtility.getString(1, 0,"LoginPage");
-		String password = ExcelUtility.getString(1, 1,"LoginPage");
-		
 		loginpage = new LoginPage(driver);
 		homePage = new HomePage(driver);
 		
