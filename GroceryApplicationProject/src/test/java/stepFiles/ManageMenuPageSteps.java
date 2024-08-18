@@ -21,6 +21,7 @@ public class ManageMenuPageSteps extends BaseClassStep{
 	String tableValue =  ExcelUtility.getString(1, 4,"ManageMenu");
 	String fileValue =  ExcelUtility.getString(1, 5,"ManageMenu");
 	String colourValue =  ExcelUtility.getString(1, 6,"ManageMenu");
+	int menuOrder = ExcelUtility.getInt(1, 7,"ManageMenu");
   @Test
   public void verifyIfManageMenuListIsLoaded() {
 	  
@@ -44,6 +45,6 @@ public class ManageMenuPageSteps extends BaseClassStep{
 		loginpage.sendPassword(password);
 		loginpage.signIn();
 		manageMenuPage.managePageSelection();
-		manageMenuPage.creatingNewMenu(menuName, parentMenu, url, favIcon, tableValue, fileValue, colourValue);
+		manageMenuPage.creatingNewMenu(menuName, parentMenu, url, favIcon, tableValue, fileValue, colourValue,menuOrder);
   }
 }

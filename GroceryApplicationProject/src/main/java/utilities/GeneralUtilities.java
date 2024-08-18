@@ -49,13 +49,15 @@ public class GeneralUtilities {
 		actions.clickAndHold(dragableItem).moveToElement(dropItem).release(dropItem).build().perform();
 	}
 
-	public int randon(int limit) {
-		Random random = new Random();
-		// int limit = 1000;
-		int randomNumber = random.nextInt(limit);
-		return randomNumber;
-	}
+	/*
+	 * public int randomInterger(int limit) { Random random = new Random(); int
+	 * randomNumber = random.nextInt(limit); return randomNumber; }
+	 */
 
+	public int randomInteger(int limit)
+	{
+	    return new Random().nextInt(limit);
+	}
 	public String generateCurrentDateAndTime() {
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyhhmmss");//for 24hrs format ddMMyyHHmmss
