@@ -1,5 +1,8 @@
 package pageFiles;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,6 +20,7 @@ public class ManageMenuPage {
 	WaitUtilities waitUtility = new WaitUtilities();
 	FileUploadUtilities fileUploadUtility = new FileUploadUtilities();
 	String menuNameRandomString;
+	
 
 	public ManageMenuPage(WebDriver driver)
 	{
@@ -40,7 +44,7 @@ public class ManageMenuPage {
 	@FindBy(id = "menu_order") WebElement menuOrderElement;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary'") WebElement searchElement;
 	@FindBy(id = "sr_name") WebElement searchTextElement;
-
+	
 	public void managePageSelection()
 	{
 		waitUtility.waitForElementClickable(driver, settingsIconElement);
@@ -70,7 +74,7 @@ public class ManageMenuPage {
 		menuTableElement.sendKeys(tableValue);
 		activeFileElement.sendKeys(fileValue);
 		colourElement.sendKeys(colourValue);
-		
+
 		saveElement.click();
 		waitUtility.waitForElement(driver, successMessageElement);
 	}
@@ -85,10 +89,31 @@ public class ManageMenuPage {
 	{
 		return menuNameRandomString;
 	}
-	
-	public void searchCreatedMenu() 
+
+	public void searchCreatedMenu(String menuNameRandomString) 
 	{
-		searchElement.click();
-		searchTextElement.sendKeys(menuNameRandomString);
+		//searchElement.click();
+		
+		WebElement element;
+
+		List <WebElement> rowCountElement = driver.findElements(By.xpath("//table[@class='table table-bordered']//tbody//tr//td"));
+		int count = (rowCountElement.size())/2;
+		
+		for (int i=1; i<=count;i++)
+		{
+			if(rowCountElement.get(i).getText().equals(menuNameRandomString))
+			{
+				System.out.println("entering loop");
+				String locatorString = "//table[@class='table table-bordered']//tbody//tr//td["+ i +"]";
+				element = driver.findElement(By.xpath(locatorString));
+				System.out.println("Value: "+ element.getText());
+				break;
+			}
+			else {
+				{
+					System.out.println("No result");
+				}
+			}
+		}
 	}
 }
