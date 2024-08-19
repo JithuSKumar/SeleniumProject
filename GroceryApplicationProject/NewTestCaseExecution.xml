@@ -1,0 +1,8 @@
+<suite name="GroceryApplicationProjectSuite">
+	<test name="ChromeTest">
+		<classes>
+			<parameter name ="Browser" value ="chrome"></parameter>
+			<class name="stepFiles.ManageAdminUserPageStep"></class>
+		</classes>
+	</test>
+</suite>

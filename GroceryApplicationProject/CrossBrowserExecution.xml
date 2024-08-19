@@ -1,0 +1,16 @@
+<suite name="GroceryApplicationProjectSuite" parallel ="tests" thread-count = "2">
+	<test name="ChromeTest">
+		<classes>
+			<parameter name ="Browser" value ="chrome"></parameter>
+			<class name="stepFiles.LoginPageStep"></class>
+			<class name="stepFiles.HomePageStep"></class>
+		</classes>
+	</test>
+	<test name="FirefoxTest">
+		<classes>
+			<parameter name ="Browser" value ="firefox"></parameter>
+			<class name="stepFiles.LoginPageStep"></class>
+			<class name="stepFiles.HomePageStep"></class>
+		</classes>
+	</test>
+</suite>
