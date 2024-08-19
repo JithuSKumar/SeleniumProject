@@ -12,7 +12,6 @@ public class LoginPageStep extends BaseClassStep {
 	LoginPage loginpage;
 	HomePage homePage;
 
-
 	@Test
 	public void validDataLogin()
 	{

@@ -7,13 +7,11 @@ import pageFiles.LoginPage;
 import pageFiles.ManageMenuPage;
 import utilities.ExcelUtility;
 
-public class ManageMenuPageSteps extends BaseClassStep{
+public class ManageMenuPageStep extends BaseClassStep{
 
 	LoginPage loginpage;
 	ManageMenuPage manageMenuPage;
 
-	String userName = ExcelUtility.getString(1, 0,"LoginPage");
-	String password = ExcelUtility.getString(1, 1,"LoginPage");
 	String menuName = ExcelUtility.getString(1, 0,"ManageMenu");
 	String parentMenu = ExcelUtility.getString(1, 1,"ManageMenu");
 	String url =  ExcelUtility.getString(1, 2,"ManageMenu");
@@ -57,8 +55,9 @@ public class ManageMenuPageSteps extends BaseClassStep{
 		loginpage.sendUsername(userName);
 		loginpage.sendPassword(password);
 		loginpage.signIn();
+		manageMenuPage.generateRandomMenuName(menuName);
 		manageMenuPage.managePageSelection();
-		manageMenuPage.searchCreatedMenu(menuName);
+		manageMenuPage.searchCreatedMenu();
 	}
 }
 

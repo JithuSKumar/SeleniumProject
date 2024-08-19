@@ -13,9 +13,7 @@ public class ManageCategoryPageStep extends BaseClassStep {
 
 	LoginPage loginpage;
 	ManageCategoryPage manageCategoryPage;
-	String userName = ExcelUtility.getString(1, 0,"LoginPage");
-	String password = ExcelUtility.getString(1, 1,"LoginPage");
-
+	
 	@Test (priority = 1)
 	public void verifyIfCategoryListisLoaded()
 	{
@@ -58,6 +56,7 @@ public class ManageCategoryPageStep extends BaseClassStep {
 		manageCategoryPage.categoryPageSelection();		
 		String categoryName = manageCategoryPage.fetchingTheFirstEntryinTable();
 		manageCategoryPage.searchNewlyAddedCategoryVisibility(categoryName);
+		//add assertion
 	}
 	
 	@Test(priority = 4, enabled =false)

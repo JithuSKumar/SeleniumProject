@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 
 import pageFiles.HomePage;
 import pageFiles.LoginPage;
-import utilities.ExcelUtility;
 
 public class HomePageStep extends BaseClassStep {
 	
@@ -15,9 +14,6 @@ public class HomePageStep extends BaseClassStep {
 	LoginPage loginpage;
 	HomePage homePage;
 	
-	String userName = ExcelUtility.getString(1, 0,"LoginPage");
-	String password = ExcelUtility.getString(1, 1,"LoginPage");
-
 	@Test
 	public void verifyTheUserAbleToLoginWithValidCredentials()
 	{
@@ -37,6 +33,7 @@ public class HomePageStep extends BaseClassStep {
 		homePage.manageProdcutStatus();
 		boolean actualProductStatus = homePage.manageProdcutStatus();
 		Assert.assertEquals(actualProductStatus, false, "Element selection status: ");
+		
 	}
 	
 	

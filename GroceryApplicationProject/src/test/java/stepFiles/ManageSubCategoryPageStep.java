@@ -14,9 +14,6 @@ public class ManageSubCategoryPageStep extends BaseClassStep {
 	ManageSubCategoryPage manageSubCategoryPage;
 	ManageCategoryPage manageCategoryPage;
 	
-	String userName = ExcelUtility.getString(1, 0,"LoginPage");
-	String password = ExcelUtility.getString(1, 1,"LoginPage");
-	
 	@Test (priority = 1)
 	public void verifyIfCategoryListisLoaded()
 	{

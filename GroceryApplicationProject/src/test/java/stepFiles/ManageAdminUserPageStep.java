@@ -14,10 +14,6 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 
 	LoginPage loginpage;
 	ManageAdminUserPage adminUserCreationPage;
-	
-	String userName = ExcelUtility.getString(1, 0,"LoginPage");
-	String password = ExcelUtility.getString(1, 1,"LoginPage");
-	
 
 	@Test(priority = 1)
 	public void verifyValidAdminUserCreation() throws InterruptedException
@@ -52,6 +48,7 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 		adminUserCreationPage.adminUserListSelection();
 		String userNameSearch = ExcelUtility.getString(1, 0,"AdminUserCreation");
 		adminUserCreationPage.searchNewUser(userNameSearch);
+		//add assertion
 	}
 	
 	@Test(priority = 3)
@@ -66,6 +63,7 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 		loginpage.signIn();
 		adminUserCreationPage.adminUserListSelection();
 		adminUserCreationPage.fetchingTheFirstEntryinTable();
+		//add assertion
 	}
 	
 	@Test(priority = 4)

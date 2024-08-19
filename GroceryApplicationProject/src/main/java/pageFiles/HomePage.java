@@ -21,6 +21,7 @@ public class HomePage {
 	@FindBy(xpath = "//i[@class='nav-icon fas fa-edit']")WebElement manageContentElement;
 	@FindBy(xpath = "//i[@class='nav-icon fas fa-list-alt']")WebElement manageCategoryElement;
 	@FindBy(xpath = "//i[@class='nav-icon fas fa-users']")WebElement adminUserElement;
+	@FindBy(xpath = "//i[@class='nav-icon fas fa-']") WebElement manageProductElement1;
 
 	public String getDashboardText()
 	{

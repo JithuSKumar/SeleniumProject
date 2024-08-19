@@ -20,7 +20,7 @@ public class ManageMenuPage {
 	WaitUtilities waitUtility = new WaitUtilities();
 	FileUploadUtilities fileUploadUtility = new FileUploadUtilities();
 	String menuNameRandomString;
-	
+
 
 	public ManageMenuPage(WebDriver driver)
 	{
@@ -44,7 +44,7 @@ public class ManageMenuPage {
 	@FindBy(id = "menu_order") WebElement menuOrderElement;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary'") WebElement searchElement;
 	@FindBy(id = "sr_name") WebElement searchTextElement;
-	
+
 	public void managePageSelection()
 	{
 		waitUtility.waitForElementClickable(driver, settingsIconElement);
@@ -79,10 +79,11 @@ public class ManageMenuPage {
 		waitUtility.waitForElement(driver, successMessageElement);
 	}
 
-	public void generateRandomUser(String menuName)
+	public void generateRandomMenuName(String menuName)
 	{
 		String menuNameRandomString= menuName + generaUtility.generateCurrentDateAndTime();
 		this.menuNameRandomString = menuNameRandomString;
+		System.out.println("Random Name: "+menuNameRandomString);
 	}
 
 	public String readRandomCategoryNameString()
@@ -90,29 +91,28 @@ public class ManageMenuPage {
 		return menuNameRandomString;
 	}
 
-	public void searchCreatedMenu(String menuNameRandomString) 
+	public void searchCreatedMenu() 
 	{
-		//searchElement.click();
-		
 		WebElement element;
 
-		List <WebElement> rowCountElement = driver.findElements(By.xpath("//table[@class='table table-bordered']//tbody//tr//td"));
-		int count = (rowCountElement.size())/2;
-		
+		List <WebElement> rowCountElement = driver.findElements(By.xpath("//table[@class='table table-bordered']//tbody//tr//td[1]"));
+		int count = (rowCountElement.size());
+		System.out.println(count);
+		System.out.println("search word: "+ "|-"+menuNameRandomString);
 		for (int i=1; i<=count;i++)
 		{
-			if(rowCountElement.get(i).getText().equals(menuNameRandomString))
+			if(rowCountElement.get(i).getText().equals(("|-"+menuNameRandomString)))
 			{
+				System.out.println("ele: "+ rowCountElement.get(i).getText());
 				System.out.println("entering loop");
-				String locatorString = "//table[@class='table table-bordered']//tbody//tr//td["+ i +"]";
+				String locatorString = "//table[@class='table table-bordered']//tbody//tr//td["+ (i) +"]";
 				element = driver.findElement(By.xpath(locatorString));
 				System.out.println("Value: "+ element.getText());
 				break;
 			}
-			else {
-				{
-					System.out.println("No result");
-				}
+			else 
+			{
+				System.out.println("No result");
 			}
 		}
 	}
