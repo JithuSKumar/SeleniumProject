@@ -71,11 +71,7 @@ public class GeneralUtilities {
 		return formattedDate;
 	}
 
-	public static final String TESTDATAFILE = System.getProperty("user.dir")
-			+ "\\src\\main\\java\\resources\\TestData.xlsx";
-	// public static final String CONFIGfILE = System.getProperty("user.dir")+
-	// "\\src\\main\\java\\resources\\config.properties";
-	public final String IMAGEFILEFORMANAGECATEGORYCATEGORYPAGE = System.getProperty("user.dir")
-			+ "\\src\\main\\java\\resources\\gift.png";
+	public static final String TESTDATAFILE = System.getProperty("user.dir") + "\\src\\test\\resources\\Properties\\TestData.xlsx";
+	public final String IMAGEFILEFORMANAGECATEGORYCATEGORYPAGE = System.getProperty("user.dir")+ "\\src\\test\\resources\\Properties\\gift.png";
 
 }

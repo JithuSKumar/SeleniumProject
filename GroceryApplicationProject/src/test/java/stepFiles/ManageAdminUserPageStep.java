@@ -2,12 +2,14 @@ package stepFiles;
 
 import static org.testng.Assert.assertTrue;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pageFiles.ManageAdminUserPage;
 import pageFiles.LoginPage;
-import utilities.ExcelUtility;
+import utilities.ExcelUtilities;
 
 public class ManageAdminUserPageStep extends BaseClassStep {
 
@@ -16,7 +18,7 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 	ManageAdminUserPage adminUserCreationPage;
 
 	@Test(priority = 1)
-	public void verifyValidAdminUserCreation() throws InterruptedException
+	public void verifyValidAdminUserCreation() throws InterruptedException, IOException
 	{
 		loginpage = new LoginPage(driver);
 		adminUserCreationPage = new ManageAdminUserPage(driver);
@@ -27,13 +29,13 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 		assertTrue(isNavigatedToHomePage,"After entering valid credentials in Login page user is not navigated to the home page");
 		adminUserCreationPage.adminUserListSelection();
 		adminUserCreationPage.fetchingTheFirstEntryinTable();
-		String newuserName = ExcelUtility.getString(1, 0,"AdminUserCreation");
-		String newUserpassword = ExcelUtility.getString(1, 1,"AdminUserCreation");
-		String newUserType = ExcelUtility.getString(1, 2,"AdminUserCreation");
+		String newuserName = ExcelUtilities.getString(1, 0,"AdminUserCreation");
+		String newUserpassword = ExcelUtilities.getString(1, 1,"AdminUserCreation");
+		String newUserType = ExcelUtilities.getString(1, 2,"AdminUserCreation");
 		adminUserCreationPage.newAdmineUserCreation(newuserName, newUserpassword, newUserType);
 		adminUserCreationPage.fetchingTheFirstEntryinTable();
 		String actualValueString = adminUserCreationPage.fetchingTheFirstEntryinTable();
-		String expectedValue = ExcelUtility.getString(1, 0,"AdminUserCreation");
+		String expectedValue = ExcelUtilities.getString(1, 0,"AdminUserCreation");
 		Assert.assertEquals(actualValueString, expectedValue, "New User creation wasn't success.");
 	}
 	
@@ -46,7 +48,7 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 		loginpage.sendPassword(password);
 		loginpage.signIn();
 		adminUserCreationPage.adminUserListSelection();
-		String userNameSearch = ExcelUtility.getString(1, 0,"AdminUserCreation");
+		String userNameSearch = ExcelUtilities.getString(1, 0,"AdminUserCreation");
 		adminUserCreationPage.searchNewUser(userNameSearch);
 		//add assertion
 	}
@@ -54,8 +56,8 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 	@Test(priority = 3)
 	public void verifyNewUserLogin()
 	{
-		String userName = ExcelUtility.getString(1, 0,"AdminUserCreation");
-		String password = ExcelUtility.getString(1, 1,"AdminUserCreation");
+		String userName = ExcelUtilities.getString(1, 0,"AdminUserCreation");
+		String password = ExcelUtilities.getString(1, 1,"AdminUserCreation");
 		loginpage = new LoginPage(driver);
 		adminUserCreationPage = new ManageAdminUserPage(driver);
 		loginpage.sendUsername(userName);
@@ -78,7 +80,7 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 		adminUserCreationPage.fetchingTheFirstEntryinTable();
 		adminUserCreationPage.deletingTheFirstUser();
 		String actualValueString = adminUserCreationPage.fetchingTheFirstEntryinTable();
-		String expectedValue = ExcelUtility.getString(1, 0,"AdminUserCreation");
+		String expectedValue = ExcelUtilities.getString(1, 0,"AdminUserCreation");
 		Assert.assertNotEquals(actualValueString, expectedValue, "New User deletion wasn't success.");
 	}
 

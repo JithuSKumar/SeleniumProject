@@ -33,7 +33,6 @@ public class HomePageStep extends BaseClassStep {
 		homePage.manageProdcutStatus();
 		boolean actualProductStatus = homePage.manageProdcutStatus();
 		Assert.assertEquals(actualProductStatus, false, "Element selection status: ");
-		
 	}
 	
 	

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import pageFiles.LoginPage;
 import pageFiles.ManageCategoryPage;
-import utilities.ExcelUtility;
+import utilities.ExcelUtilities;
 
 public class ManageCategoryPageStep extends BaseClassStep {
 
@@ -37,7 +37,7 @@ public class ManageCategoryPageStep extends BaseClassStep {
 		loginpage.signIn();
 		manageCategoryPage.categoryPageSelection();
 		manageCategoryPage.fetchingTheFirstEntryinTable();
-		String categoryName = ExcelUtility.getString(1, 0,"ManageCategory&Subcategory");
+		String categoryName = ExcelUtilities.getString(1, 0,"ManageCategory&Subcategory");
 		manageCategoryPage.newCategoryCreation(categoryName);
 		manageCategoryPage.categoryPageSelection();	
 		String actualValueString = manageCategoryPage.fetchingTheFirstEntryinTable();
@@ -72,7 +72,7 @@ public class ManageCategoryPageStep extends BaseClassStep {
 		manageCategoryPage.deleteNewlyAddedCategory();
 		manageCategoryPage.fetchingTheFirstEntryinTable();
 		String actualValueString = manageCategoryPage.fetchingTheFirstEntryinTable();
-		String expectedValue = ExcelUtility.getString(1, 0,"ManageCategory&Subcategory");
+		String expectedValue = ExcelUtilities.getString(1, 0,"ManageCategory&Subcategory");
 		Assert.assertNotEquals(actualValueString, expectedValue, "New Category deletion wasn't success.");
 	}
 }

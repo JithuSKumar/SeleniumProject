@@ -1,11 +1,14 @@
 package pageFiles;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import utilities.GeneralUtilities;
+import utilities.ScreenShotUtilities;
 import utilities.WaitUtilities;
 
 public class ManageAdminUserPage {
@@ -13,6 +16,7 @@ public class ManageAdminUserPage {
 WebDriver driver;
 GeneralUtilities generaUtility = new GeneralUtilities();
 WaitUtilities waitUtility = new WaitUtilities();
+ScreenShotUtilities screenShotUtilities = new ScreenShotUtilities();
 	
 	public ManageAdminUserPage(WebDriver driver)
 	{
@@ -49,7 +53,6 @@ WaitUtilities waitUtility = new WaitUtilities();
 	public boolean isAdminExistingUserListVisible() throws InterruptedException 
 	{
 		moreInfoOfAdminUserElement.click();
-		//waitUtility.wait(20);
 		return newButtonElement.isDisplayed();
 	}
 	
@@ -59,13 +62,15 @@ WaitUtilities waitUtility = new WaitUtilities();
 		return firstElementValueString;
 	}
 	
-	public void newAdmineUserCreation(String userName, String password, String userType)
+	public void newAdmineUserCreation(String userName, String password, String userType) throws IOException
 	{
 		newButtonElement.click();
 		newUserNamElement.sendKeys(userName);
 		newUserPasswordElement.sendKeys(password);
 		generaUtility.selectDropdownbyText(newUserTypElement, userType);
+		screenShotUtilities.captureScreenShot(driver, userName);
 		newUserSubmitElement.click();
+		screenShotUtilities.captureScreenShot(driver, userName);
 	}
 	
 	public void searchNewUser(String userName) throws InterruptedException

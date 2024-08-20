@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pageFiles.LoginPage;
 import pageFiles.ManageCategoryPage;
 import pageFiles.ManageSubCategoryPage;
-import utilities.ExcelUtility;
+import utilities.ExcelUtilities;
 
 public class ManageSubCategoryPageStep extends BaseClassStep {
 	
@@ -39,7 +39,7 @@ public class ManageSubCategoryPageStep extends BaseClassStep {
 		manageCategoryPage.categoryPageSelection();	
 		String CategoryType = manageCategoryPage.fetchingTheFirstEntryinTable();
 		manageSubCategoryPage.subCategoryPageSelection();
-		String subCategoryName = ExcelUtility.getString(1, 0,"ManageCategory&Subcategory");
+		String subCategoryName = ExcelUtilities.getString(1, 0,"ManageCategory&Subcategory");
 		manageSubCategoryPage.creationOfNewSubCategory(subCategoryName, CategoryType);
 	}
 }

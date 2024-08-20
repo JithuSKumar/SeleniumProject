@@ -5,21 +5,21 @@ import org.testng.annotations.Test;
 
 import pageFiles.LoginPage;
 import pageFiles.ManageMenuPage;
-import utilities.ExcelUtility;
+import utilities.ExcelUtilities;
 
 public class ManageMenuPageStep extends BaseClassStep{
 
 	LoginPage loginpage;
 	ManageMenuPage manageMenuPage;
 
-	String menuName = ExcelUtility.getString(1, 0,"ManageMenu");
-	String parentMenu = ExcelUtility.getString(1, 1,"ManageMenu");
-	String url =  ExcelUtility.getString(1, 2,"ManageMenu");
-	String favIcon =  ExcelUtility.getString(1, 3,"ManageMenu"); 
-	String tableValue =  ExcelUtility.getString(1, 4,"ManageMenu");
-	String fileValue =  ExcelUtility.getString(1, 5,"ManageMenu");
-	String colourValue =  ExcelUtility.getString(1, 6,"ManageMenu");
-	int menuOrder = ExcelUtility.getInt(1, 7,"ManageMenu");
+	String menuName = ExcelUtilities.getString(1, 0,"ManageMenu");
+	String parentMenu = ExcelUtilities.getString(1, 1,"ManageMenu");
+	String url =  ExcelUtilities.getString(1, 2,"ManageMenu");
+	String favIcon =  ExcelUtilities.getString(1, 3,"ManageMenu"); 
+	String tableValue =  ExcelUtilities.getString(1, 4,"ManageMenu");
+	String fileValue =  ExcelUtilities.getString(1, 5,"ManageMenu");
+	String colourValue =  ExcelUtilities.getString(1, 6,"ManageMenu");
+	int menuOrder = ExcelUtilities.getInt(1, 7,"ManageMenu");
 	
 	@Test (priority = 1)
 	public void verifyIfManageMenuListIsLoaded() {
