@@ -62,8 +62,10 @@ String pageTitle;
 		return newButtonElement.isDisplayed();
 	}
 	
-	public String fetchingTheFirstEntryinTable()
+	public String fetchingTheFirstEntryinTable() throws IOException
 	{
+		pageTitle();
+		screenShotUtilities.captureScreenShot(driver, pageTitle);
 		String firstElementValueString = firstElementinUserListElement.getText();
 		return firstElementValueString;
 	}
@@ -81,19 +83,23 @@ String pageTitle;
 		screenShotUtilities.captureScreenShot(driver, pageTitle);
 	}
 	
-	public void searchNewUser(String userName) throws InterruptedException
+	public void searchNewUser(String userName) throws InterruptedException, IOException
 	{
 		searchButtonElement.click();
 		userNameSearchElement.sendKeys(userName);
 		waitUtility.fluentwaitForElement(driver, subSearchElement);
 		subSearchElement.click();
+		pageTitle();
+		screenShotUtilities.captureScreenShot(driver, pageTitle);
 	}
 	
-	public void deletingTheFirstUser()
+	public void deletingTheFirstUser() throws IOException
 	{
 		firstUserDeletElement.click();
 		waitUtility.waitForAlterIsPresent(driver);
 		generaUtility.alertHandlingaccept(driver);
+		pageTitle();
+		screenShotUtilities.captureScreenShot(driver, pageTitle);
 	}
 	
 	public void userLogout()
