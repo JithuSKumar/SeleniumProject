@@ -2,6 +2,7 @@ package pageFiles;
 
 import java.io.IOException;
 
+import org.apache.commons.math3.analysis.function.Constant;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,11 +18,13 @@ WebDriver driver;
 GeneralUtilities generaUtility = new GeneralUtilities();
 WaitUtilities waitUtility = new WaitUtilities();
 ScreenShotUtilities screenShotUtilities = new ScreenShotUtilities();
+String pageTitle;
 	
 	public ManageAdminUserPage(WebDriver driver)
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
+		this.pageTitle = driver.getTitle().replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
 	}
 	
 
@@ -68,9 +71,9 @@ ScreenShotUtilities screenShotUtilities = new ScreenShotUtilities();
 		newUserNamElement.sendKeys(userName);
 		newUserPasswordElement.sendKeys(password);
 		generaUtility.selectDropdownbyText(newUserTypElement, userType);
-		screenShotUtilities.captureScreenShot(driver, userName);
+		screenShotUtilities.captureScreenShot(driver, pageTitle);
 		newUserSubmitElement.click();
-		screenShotUtilities.captureScreenShot(driver, userName);
+		screenShotUtilities.captureScreenShot(driver, pageTitle);
 	}
 	
 	public void searchNewUser(String userName) throws InterruptedException

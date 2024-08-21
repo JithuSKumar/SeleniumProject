@@ -40,7 +40,7 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 	}
 	
 	@Test(priority = 2)
-	public void verifyFilteringofNewUser() throws InterruptedException
+	public void verifyFilteringofNewUser() throws InterruptedException, IOException
 	{
 		loginpage = new LoginPage(driver);
 		adminUserCreationPage = new ManageAdminUserPage(driver);
@@ -54,7 +54,7 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 	}
 	
 	@Test(priority = 3)
-	public void verifyNewUserLogin()
+	public void verifyNewUserLogin() throws IOException
 	{
 		String userName = ExcelUtilities.getString(1, 0,"AdminUserCreation");
 		String password = ExcelUtilities.getString(1, 1,"AdminUserCreation");
@@ -69,7 +69,7 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 	}
 	
 	@Test(priority = 4)
-	public void verifyUserDeletion()
+	public void verifyUserDeletion() throws IOException
 	{
 		loginpage = new LoginPage(driver);
 		adminUserCreationPage = new ManageAdminUserPage(driver);

@@ -2,6 +2,8 @@ package stepFiles;
 
 import static org.testng.Assert.assertTrue;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,7 +17,7 @@ public class HomePageStep extends BaseClassStep {
 	HomePage homePage;
 	
 	@Test
-	public void verifyTheUserAbleToLoginWithValidCredentials()
+	public void verifyTheUserAbleToLoginWithValidCredentials() throws IOException
 	{
 		loginpage = new LoginPage(driver);
 		homePage = new HomePage(driver);

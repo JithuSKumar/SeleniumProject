@@ -187,7 +187,7 @@ public class WaitUtilities {
 		((FluentWait<WebDriver>) fluentWait).withTimeout(Duration.ofSeconds(EXPLICIT_WAIT));
 		((FluentWait<WebDriver>) fluentWait).pollingEvery(Duration.ofSeconds(EXPLICIT_WAIT));
 		((FluentWait<WebDriver>) fluentWait).ignoring(NoSuchElementException.class);
-		WebElement foo = (WebElement) fluentWait.until(ExpectedConditions.alertIsPresent());
+		//WebElement foo = (WebElement) fluentWait.until(ExpectedConditions.alertIsPresent());
 	}
 
 	public void fluentwaitForFrameToBeAvailableAndSwitchToIt(WebDriver driver, By target) 

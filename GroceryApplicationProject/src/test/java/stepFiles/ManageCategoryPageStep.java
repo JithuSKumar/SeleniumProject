@@ -1,6 +1,7 @@
 package stepFiles;
 
 import java.awt.AWTException;
+import java.io.IOException;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ public class ManageCategoryPageStep extends BaseClassStep {
 	ManageCategoryPage manageCategoryPage;
 	
 	@Test (priority = 1)
-	public void verifyIfCategoryListisLoaded()
+	public void verifyIfCategoryListisLoaded() throws IOException
 	{
 		loginpage = new LoginPage(driver);
 		manageCategoryPage = new ManageCategoryPage(driver);
@@ -28,7 +29,7 @@ public class ManageCategoryPageStep extends BaseClassStep {
 	}
 	
 	@Test (priority = 2)
-	public void VerifyNewCategoryCreation() throws AWTException
+	public void VerifyNewCategoryCreation() throws AWTException, IOException
 	{
 		loginpage = new LoginPage(driver);
 		manageCategoryPage = new ManageCategoryPage(driver);
@@ -46,7 +47,7 @@ public class ManageCategoryPageStep extends BaseClassStep {
 	}
 	
 	@Test (priority = 3)
-	public void searchNewlyAddedCategory()
+	public void searchNewlyAddedCategory() throws IOException
 	{
 		loginpage = new LoginPage(driver);
 		manageCategoryPage = new ManageCategoryPage(driver);
@@ -60,7 +61,7 @@ public class ManageCategoryPageStep extends BaseClassStep {
 	}
 	
 	@Test(priority = 4, enabled =false)
-	public void VerifyDeleteofNewlyAddedCategory()
+	public void VerifyDeleteofNewlyAddedCategory() throws IOException
 	{
 		loginpage = new LoginPage(driver);
 		manageCategoryPage = new ManageCategoryPage(driver);

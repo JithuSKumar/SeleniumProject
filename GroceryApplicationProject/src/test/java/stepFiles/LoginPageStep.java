@@ -22,10 +22,12 @@ public class LoginPageStep extends BaseClassStep {
 	{
 		loginpage = new LoginPage(driver);
 		homePage = new HomePage(driver);
+		screenShotUtilities = new ScreenShotUtilities();
 		loginpage.sendUsername("admin");
 		loginpage.sendPassword("admin");
 		screenShotUtilities.captureScreenShot(driver, userName);
 		loginpage.signIn();
+		screenShotUtilities.captureScreenShot(driver, "UserLoggedIn");
 		String actual = homePage.getDashboardText();
 		System.out.println("Successful Login: " + actual);
 		String expected = "Dashboard";
@@ -36,6 +38,7 @@ public class LoginPageStep extends BaseClassStep {
 	public void inValidDataLogin(String userName, String password) throws IOException 
 	{
 		loginpage = new LoginPage(driver);
+		screenShotUtilities = new ScreenShotUtilities();
 		loginpage.sendUsername(userName);
 		loginpage.sendPassword(password);
 		loginpage.signIn();
