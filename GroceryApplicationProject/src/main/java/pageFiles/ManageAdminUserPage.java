@@ -24,9 +24,12 @@ String pageTitle;
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
-		this.pageTitle = driver.getTitle().replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
 	}
 	
+	 public void pageTitle()
+	    {
+	    	this.pageTitle = driver.getTitle().replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
+	    }
 
 	@FindBy(xpath = "//section[@class='content']//div//div//div[1]//div//a") WebElement moreInfoOfAdminUserElement;
 	@FindBy(xpath = "//h4[text()=\"Admin Users\"]") WebElement adminUserListTablElement;
@@ -71,8 +74,10 @@ String pageTitle;
 		newUserNamElement.sendKeys(userName);
 		newUserPasswordElement.sendKeys(password);
 		generaUtility.selectDropdownbyText(newUserTypElement, userType);
+		pageTitle();
 		screenShotUtilities.captureScreenShot(driver, pageTitle);
 		newUserSubmitElement.click();
+		pageTitle();
 		screenShotUtilities.captureScreenShot(driver, pageTitle);
 	}
 	

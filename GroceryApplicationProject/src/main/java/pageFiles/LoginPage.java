@@ -100,6 +100,7 @@ public class LoginPage {
 
     public void signIn() {
         signInElement.click();
+        pageTitle();
         try {
             screenShotUtilities.captureScreenShot(driver, pageTitle);
         } catch (IOException e) {
