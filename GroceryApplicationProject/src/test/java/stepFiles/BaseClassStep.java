@@ -2,7 +2,11 @@ package stepFiles;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
+
+import com.aventstack.extentreports.ExtentTest;
+
 import utilities.ExcelUtilities;
+import utilities.ExtentReportUtilities;
 import utilities.ScreenShotUtilities;
 
 import java.io.FileInputStream;
@@ -21,7 +25,9 @@ public class BaseClassStep {
 	String userName = ExcelUtilities.getString(1, 0,"LoginPage");
 	String password = ExcelUtilities.getString(1, 1,"LoginPage");
 	ScreenShotUtilities screenShotUtilities;
-
+	ExtentReportUtilities extentReportUtilities;
+	ExtentTest extentTest;
+	
 	public static Properties properties;
 
 	public static void testBasics() throws IOException
@@ -35,6 +41,8 @@ public class BaseClassStep {
 	@Parameters("Browser")
 	public void beforeMethod(String browserName) throws IOException
 	{
+		extentReportUtilities = new ExtentReportUtilities();
+		extentTest = extentReportUtilities.createTest("Name");
 		testBasics();
 		if (browserName.equals("chrome"))
 		{
@@ -49,6 +57,7 @@ public class BaseClassStep {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(100));
+		
 	}
 
 	@AfterMethod

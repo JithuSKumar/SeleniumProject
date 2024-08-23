@@ -1,16 +1,28 @@
-<suite name="GroceryApplicationProjectSuite" parallel ="tests" thread-count = "2">
-	<test name="ChromeTest">
-		<classes>
-			<parameter name ="Browser" value ="chrome"></parameter>
-			<class name="stepFiles.LoginPageStep"></class>
-			<class name="stepFiles.HomePageStep"></class>
-		</classes>
-	</test>
-	<test name="FirefoxTest">
-		<classes>
-			<parameter name ="Browser" value ="firefox"></parameter>
-			<class name="stepFiles.LoginPageStep"></class>
-			<class name="stepFiles.HomePageStep"></class>
-		</classes>
-	</test>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="GroceryApplicationProjectSuite" parallel="tests" thread-count="2">
+    
+    <!-- Define listeners at the suite level -->
+    <listeners>
+        <listener class-name="utilities.ExtentReportUtilities"/>
+    </listeners>
+
+    <!-- First test block -->
+    <test name="ChromeTest">
+        <!-- Define parameters at the test level -->
+        <parameter name="Browser" value="chrome"/>
+        <classes>
+            <class name="stepFiles.LoginPageStep"/>
+            <class name="stepFiles.HomePageStep"/>
+        </classes>
+    </test>
+
+    <!-- Second test block -->
+    <test name="FirefoxTest">
+        <parameter name="Browser" value="firefox"/>
+        <classes>
+            <class name="stepFiles.LoginPageStep"/>
+            <class name="stepFiles.HomePageStep"/>
+        </classes>
+    </test>
+
 </suite>

@@ -1,9 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
 <suite name="GroceryApplicationProjectSuite">
 	<test name="ChromeTest">
+		<parameter name="Browser" value="chrome"></parameter>
 		<classes>
-			<parameter name ="Browser" value ="chrome"></parameter>
-			<!--<class name="stepFiles.LoginPageStep"></class>-->
-			<class name="stepFiles.ManageAdminUserPageStep"></class>
+			<class name="stepFiles.LoginPageStep"></class> 
+			<class name="stepFiles.ManageAdminUserPageStep"></class> 
 		</classes>
 	</test>
 </suite>
