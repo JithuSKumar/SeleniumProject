@@ -70,6 +70,12 @@ public class GeneralUtilities {
 		String formattedDate = currentDate.format(formatter);
 		return formattedDate;
 	}
+	
+	public String pageTitle(WebDriver driver)
+    {
+		String pageTitle;
+    	return pageTitle = driver.getTitle().replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
+    }
 
 	public static final String TESTDATAFILE = System.getProperty("user.dir") + "\\src\\test\\resources\\Properties\\TestData.xlsx";
 	public final String IMAGEFILEFORMANAGECATEGORYCATEGORYPAGE = System.getProperty("user.dir")+ "\\src\\test\\resources\\Properties\\gift.png";

@@ -1,12 +1,14 @@
 package pageFiles;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.ExcelUtilities;
 import utilities.GeneralUtilities;
 import utilities.ScreenShotUtilities;
 import utilities.WaitUtilities;
@@ -17,6 +19,7 @@ WebDriver driver;
 GeneralUtilities generaUtility = new GeneralUtilities();
 WaitUtilities waitUtility = new WaitUtilities();
 ScreenShotUtilities screenShotUtilities = new ScreenShotUtilities();
+ExcelUtilities excelutility = new ExcelUtilities();
 String pageTitle;
 	
 	public ManageAdminUserPage(WebDriver driver)
@@ -32,6 +35,7 @@ String pageTitle;
 
 	@FindBy(xpath = "//section[@class='content']//div//div//div[1]//div//a") WebElement moreInfoOfAdminUserElement;
 	@FindBy(xpath = "//h4[text()=\"Admin Users\"]") WebElement adminUserListTablElement;
+	@FindBy(xpath = "//a//p[text()='Admin Users']") WebElement adminUserElement;
 	@FindBy(xpath ="//tbody//tr[1]//td[1]") WebElement firstElementinUserListElement;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']") WebElement newButtonElement;
 	@FindBy(id = "username") WebElement newUserNamElement;
@@ -43,6 +47,7 @@ String pageTitle;
 	@FindBy(xpath = "//button[@value='sr']") WebElement subSearchElement;
 	@FindBy(xpath = "//tbody//tr[1]//td[5]//i[@class='fas fa-trash-alt']") WebElement firstUserDeletElement;
 	@FindBy(xpath = "//a[1][@data-toggle='dropdown']") WebElement userIconElement;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]") List<WebElement> tableRows;
 	@FindBy(xpath = "//i[@class='ace-icon fa fa-power-off']") WebElement logoutElement;
 	
 	public boolean isAdminUserTabVisible()
