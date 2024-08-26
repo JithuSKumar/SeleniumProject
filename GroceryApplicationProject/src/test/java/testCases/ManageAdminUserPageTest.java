@@ -1,4 +1,4 @@
-package stepFiles;
+package testCases;
 
 import static org.testng.Assert.assertTrue;
 
@@ -11,7 +11,7 @@ import pageFiles.ManageAdminUserPage;
 import pageFiles.LoginPage;
 import utilities.ExcelUtilities;
 
-public class ManageAdminUserPageStep extends BaseClassStep {
+public class ManageAdminUserPageTest extends BaseClassTest {
 
 
 	LoginPage loginpage;
@@ -50,7 +50,10 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 		adminUserCreationPage.adminUserListSelection();
 		String userNameSearch = ExcelUtilities.getString(1, 0,"AdminUserCreation");
 		adminUserCreationPage.searchNewUser(userNameSearch);
-		//add assertion
+		adminUserCreationPage.fetchingTheFirstEntryinTable();
+		String actualValueString = adminUserCreationPage.fetchingTheFirstEntryinTable();
+		String expectedValue = ExcelUtilities.getString(1, 0,"AdminUserCreation");
+		Assert.assertEquals(actualValueString, expectedValue, "Created user didn't reflect in list");
 	}
 	
 	@Test(priority = 3)
@@ -63,9 +66,9 @@ public class ManageAdminUserPageStep extends BaseClassStep {
 		loginpage.sendUsername(userName);
 		loginpage.sendPassword(password);
 		loginpage.signIn();
-		adminUserCreationPage.adminUserListSelection();
-		adminUserCreationPage.fetchingTheFirstEntryinTable();
-		//add assertion
+		String actualValueString = adminUserCreationPage.getUserName();
+		String expectedValue = ExcelUtilities.getString(1, 0,"AdminUserCreation");
+		Assert.assertEquals(actualValueString, expectedValue, "The logged-in user does not match the created user.");
 	}
 	
 	@Test(priority = 4)

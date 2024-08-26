@@ -1,6 +1,4 @@
-package stepFiles;
-
-import java.io.IOException;
+package testCases;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,11 +7,13 @@ import pageFiles.LoginPage;
 import pageFiles.ManageMenuPage;
 import utilities.ExcelUtilities;
 
-public class ManageMenuPageStep extends BaseClassStep{
+public class ManageMenuPageSteps extends BaseClassTest{
 
 	LoginPage loginpage;
 	ManageMenuPage manageMenuPage;
 
+	String userName = ExcelUtilities.getString(1, 0,"LoginPage");
+	String password = ExcelUtilities.getString(1, 1,"LoginPage");
 	String menuName = ExcelUtilities.getString(1, 0,"ManageMenu");
 	String parentMenu = ExcelUtilities.getString(1, 1,"ManageMenu");
 	String url =  ExcelUtilities.getString(1, 2,"ManageMenu");
@@ -24,7 +24,7 @@ public class ManageMenuPageStep extends BaseClassStep{
 	int menuOrder = ExcelUtilities.getInt(1, 7,"ManageMenu");
 	
 	@Test (priority = 1)
-	public void verifyIfManageMenuListIsLoaded() throws IOException {
+	public void verifyIfManageMenuListIsLoaded() {
 
 		loginpage = new LoginPage(driver);
 		manageMenuPage = new ManageMenuPage(driver);
@@ -38,7 +38,7 @@ public class ManageMenuPageStep extends BaseClassStep{
 	}
 
 	@Test (priority = 2)
-	public void createNewMenuItem() throws IOException
+	public void createNewMenuItem()
 	{
 		loginpage = new LoginPage(driver);
 		manageMenuPage = new ManageMenuPage(driver);
@@ -50,14 +50,13 @@ public class ManageMenuPageStep extends BaseClassStep{
 	}
 
 	@Test (priority = 3)
-	public void verifyIfNewlyCreatedElementInList() throws IOException
+	public void verifyIfNewlyCreatedElementInList()
 	{
 		loginpage = new LoginPage(driver);
 		manageMenuPage = new ManageMenuPage(driver);
 		loginpage.sendUsername(userName);
 		loginpage.sendPassword(password);
 		loginpage.signIn();
-		manageMenuPage.generateRandomMenuName(menuName);
 		manageMenuPage.managePageSelection();
 		manageMenuPage.searchCreatedMenu();
 	}

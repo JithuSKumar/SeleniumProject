@@ -1,4 +1,4 @@
-package stepFiles;
+package testCases;
 
 import static org.testng.Assert.assertTrue;
 
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import pageFiles.HomePage;
 import pageFiles.LoginPage;
 
-public class HomePageStep extends BaseClassStep {
+public class HomePageTest extends BaseClassTest {
 	
 	
 	LoginPage loginpage;

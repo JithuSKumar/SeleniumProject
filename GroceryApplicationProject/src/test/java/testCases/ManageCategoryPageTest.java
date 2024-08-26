@@ -1,4 +1,4 @@
-package stepFiles;
+package testCases;
 
 import java.awt.AWTException;
 import java.io.IOException;
@@ -10,10 +10,22 @@ import pageFiles.LoginPage;
 import pageFiles.ManageCategoryPage;
 import utilities.ExcelUtilities;
 
-public class ManageCategoryPageStep extends BaseClassStep {
+public class ManageCategoryPageTest extends BaseClassTest {
 
 	LoginPage loginpage;
 	ManageCategoryPage manageCategoryPage;
+	
+	public String getCreatedCategoryNameString()
+	{	
+		return createdCategoryNameString;
+	}
+
+	public void setCreatedCategoryNameString(String createdCategoryNameString)
+	{
+		this.createdCategoryNameString = createdCategoryNameString;
+	}
+
+	String createdCategoryNameString;
 	
 	@Test (priority = 1)
 	public void verifyIfCategoryListisLoaded() throws IOException
@@ -38,11 +50,11 @@ public class ManageCategoryPageStep extends BaseClassStep {
 		loginpage.signIn();
 		manageCategoryPage.categoryPageSelection();
 		manageCategoryPage.fetchingTheFirstEntryinTable();
-		String categoryName = ExcelUtilities.getString(1, 0,"ManageCategory&Subcategory");
-		manageCategoryPage.newCategoryCreation(categoryName);
+		manageCategoryPage.newCategoryCreation(ExcelUtilities.getString(1, 0,"ManageCategory&Subcategory"));
+		setCreatedCategoryNameString(manageCategoryPage.getCategoryNameString());
 		manageCategoryPage.categoryPageSelection();	
 		String actualValueString = manageCategoryPage.fetchingTheFirstEntryinTable();
-		String expectedValue = manageCategoryPage.readRandomCategoryNameString();
+		String expectedValue = manageCategoryPage.getCategoryNameString();
 		Assert.assertEquals(actualValueString, expectedValue, "New Category creation wasn't success.");
 	}
 	
@@ -54,13 +66,17 @@ public class ManageCategoryPageStep extends BaseClassStep {
 		loginpage.sendUsername(userName);
 		loginpage.sendPassword(password);
 		loginpage.signIn();
-		manageCategoryPage.categoryPageSelection();		
-		String categoryName = manageCategoryPage.fetchingTheFirstEntryinTable();
-		manageCategoryPage.searchNewlyAddedCategoryVisibility(categoryName);
-		//add assertion
+		manageCategoryPage.categoryPageSelection();	
+		System.out.println(getCreatedCategoryNameString());
+		manageCategoryPage.searchNewlyAddedCategoryVisibility(getCreatedCategoryNameString());
+		String actualValueString = manageCategoryPage.fetchingTheFirstEntryinTable();
+		System.out.println(actualValueString);
+		String expectedValueString = getCreatedCategoryNameString();
+		Assert.assertEquals(actualValueString, expectedValueString, "The filtered results do not match.");
+		
 	}
 	
-	@Test(priority = 4, enabled =false)
+	@Test(priority = 4)
 	public void VerifyDeleteofNewlyAddedCategory() throws IOException
 	{
 		loginpage = new LoginPage(driver);

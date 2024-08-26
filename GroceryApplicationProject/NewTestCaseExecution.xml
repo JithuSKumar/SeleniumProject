@@ -4,8 +4,8 @@
 	<test name="ChromeTest">
 		<parameter name="Browser" value="chrome"></parameter>
 		<classes>
-			<class name="stepFiles.LoginPageStep"></class> 
-			<class name="stepFiles.ManageAdminUserPageStep"></class> 
+			<class name="testCases.LoginPageTest"></class> 
+			<class name="testCases.ManageAdminUserPageTest"></class> 
 		</classes>
 	</test>
 </suite>

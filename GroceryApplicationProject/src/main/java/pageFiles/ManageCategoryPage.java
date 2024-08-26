@@ -26,7 +26,7 @@ public class ManageCategoryPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//i[@class='nav-icon fas fa-list-alt']") WebElement manageCategoryIconElement;
+	//@FindBy(xpath = "//section[@class='content']//div//div//div[3]//div//a") WebElement manageCategoryIconElement;
 	@FindBy(xpath = "//a//p[text()='Category']") WebElement categoryElement;
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']") WebElement listCategoryTablElement;
 	@FindBy(xpath= "//a[@class='btn btn-rounded btn-danger']") WebElement newCategoryCreationElement;
@@ -44,7 +44,7 @@ public class ManageCategoryPage {
 	
 	public boolean categoryPageSelection()
 	{
-		manageCategoryIconElement.click();
+		//manageCategoryIconElement.click();
 		categoryElement.click();
 		return listCategoryTablElement.isDisplayed();
 	}
@@ -55,10 +55,9 @@ public class ManageCategoryPage {
 	}	
 	public void newCategoryCreation(String categoryName) throws AWTException
 	{
-		String generatedCategoryName = categoryName + generaUtility.generateCurrentDateAndTime();
-	    categoryNameRandomString = generatedCategoryName;
+		setRandomCategoryName(categoryName);
 		newCategoryCreationElement.click();
-		categoryNameElement.sendKeys(generatedCategoryName);
+		categoryNameElement.sendKeys(getCategoryNameString());
 		draggingElement.click();
 		fileUploadUtility.fileUploadUsingSendKeys(uploadImagElement, generaUtility.IMAGEFILEFORMANAGECATEGORYCATEGORYPAGE);
 		categorySaveElement.click();
@@ -66,11 +65,14 @@ public class ManageCategoryPage {
 		
 		
 	}
-	public void searchNewlyAddedCategoryVisibility(String searchInput)
+	public String searchNewlyAddedCategoryVisibility(String searchInput)
 	{
 		searchElement.click();
 		searchCategoryInputElement.sendKeys(searchInput);
 		subSearchElement.click();
+		String filteredresult = firstCategoryInListElement.getText();
+		System.out.println(filteredresult);
+		return filteredresult;
 	}
 	public void deleteNewlyAddedCategory()
 	{
@@ -79,13 +81,12 @@ public class ManageCategoryPage {
 		generaUtility.alertHandlingaccept(driver);
 	}
 	
-	public void generateRandomUser(String categoryName)
+	public void setRandomCategoryName(String categoryName)
 	{
-		String categoryNameRandomString= categoryName + generaUtility.generateCurrentDateAndTime();
-		this.categoryNameRandomString = categoryNameRandomString;
+		this.categoryNameRandomString= categoryName + generaUtility.generateCurrentDateAndTime();
 	}
 	
-	public String readRandomCategoryNameString()
+	public String getCategoryNameString()
 	{
 		return categoryNameRandomString;
 	}

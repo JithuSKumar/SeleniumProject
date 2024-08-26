@@ -1,4 +1,4 @@
-package stepFiles;
+package testCases;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import pageFiles.HomePage;
 import pageFiles.LoginPage;
 import utilities.ScreenShotUtilities;
 
-public class LoginPageStep extends BaseClassStep {
+public class LoginPageTest extends BaseClassTest {
 
 	LoginPage loginpage;
 	HomePage homePage;

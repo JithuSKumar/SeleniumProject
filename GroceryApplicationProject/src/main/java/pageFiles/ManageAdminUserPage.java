@@ -63,8 +63,6 @@ String pageTitle;
 	
 	public String fetchingTheFirstEntryinTable() throws IOException
 	{
-		pageTitle();
-		screenShotUtilities.captureScreenShot(driver, pageTitle);
 		String firstElementValueString = firstElementinUserListElement.getText();
 		return firstElementValueString;
 	}
@@ -99,6 +97,12 @@ String pageTitle;
 		generaUtility.alertHandlingaccept(driver);
 		pageTitle();
 		screenShotUtilities.captureScreenShot(driver, pageTitle);
+	}
+	
+	public String getUserName()
+	{
+		String loggedInUserName = userIconElement.getText();
+		return loggedInUserName;
 	}
 	
 	public void userLogout()

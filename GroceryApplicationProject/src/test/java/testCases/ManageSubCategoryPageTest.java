@@ -1,4 +1,4 @@
-package stepFiles;
+package testCases;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import pageFiles.ManageCategoryPage;
 import pageFiles.ManageSubCategoryPage;
 import utilities.ExcelUtilities;
 
-public class ManageSubCategoryPageStep extends BaseClassStep {
+public class ManageSubCategoryPageTest extends BaseClassTest {
 	
 	LoginPage loginpage;
 	ManageSubCategoryPage manageSubCategoryPage;

@@ -11,8 +11,8 @@
         <!-- Define parameters at the test level -->
         <parameter name="Browser" value="chrome"/>
         <classes>
-            <class name="stepFiles.LoginPageStep"/>
-            <class name="stepFiles.HomePageStep"/>
+            <class name="testCases.LoginPageTest"/>
+            <class name="testCases.HomePageTest"/>
         </classes>
     </test>
 
@@ -20,8 +20,8 @@
     <test name="FirefoxTest">
         <parameter name="Browser" value="firefox"/>
         <classes>
-            <class name="stepFiles.LoginPageStep"/>
-            <class name="stepFiles.HomePageStep"/>
+            <class name="testCases.LoginPageTest"/>
+            <class name="testCases.HomePageTest"/>
         </classes>
     </test>
 

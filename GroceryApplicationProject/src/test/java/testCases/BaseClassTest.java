@@ -1,4 +1,4 @@
-package stepFiles;
+package testCases;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -19,7 +19,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 
-public class BaseClassStep {
+public class BaseClassTest {
 
 	WebDriver driver;
 	String userName = ExcelUtilities.getString(1, 0,"LoginPage");
@@ -42,7 +42,7 @@ public class BaseClassStep {
 	public void beforeMethod(String browserName) throws IOException
 	{
 		extentReportUtilities = new ExtentReportUtilities();
-		extentTest = extentReportUtilities.createTest("Name");
+		//extentTest = extentReportUtilities.createTest("Name");
 		testBasics();
 		if (browserName.equals("chrome"))
 		{
@@ -67,7 +67,7 @@ public class BaseClassStep {
 			screenShotUtilities = new ScreenShotUtilities();
 			screenShotUtilities.captureFailureScreenShot(driver, iTestResult.getName());
 		}
-		driver.close();
+		driver.quit();
 	}
 
 }
