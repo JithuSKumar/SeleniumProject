@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constant;
 import pageFiles.LoginPage;
 import pageFiles.ManageMenuPage;
 import utilities.ExcelUtilities;
@@ -34,7 +35,7 @@ public class ManageMenuPageTest extends BaseClassTest{
 		manageMenuPage.managePageSelection();
 		manageMenuPage.managePageListVisibility();
 		boolean actualTableStatus = manageMenuPage.managePageListVisibility();
-		Assert.assertEquals(actualTableStatus, true, "Manage Menu table list is not displayed.");
+		Assert.assertEquals(actualTableStatus, true, Constant.manageMenuList);
 	}
 
 	@Test (priority = 2)

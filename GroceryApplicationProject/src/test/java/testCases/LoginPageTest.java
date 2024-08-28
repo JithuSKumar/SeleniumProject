@@ -30,7 +30,7 @@ public class LoginPageTest extends BaseClassTest {
 		screenShotUtilities.captureScreenShot(driver, "UserLoggedIn");
 		String actual = homePage.getDashboardText();
 		System.out.println("Successful Login: " + actual);
-		String expected = "Dashboard11";
+		String expected = "Dashboard";
 		Assert.assertEquals(actual, expected, Constant.loginPageStep_validDataLogin);
 	}
 

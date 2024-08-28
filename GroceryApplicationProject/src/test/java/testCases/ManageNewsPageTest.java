@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constant;
 import pageFiles.LoginPage;
 import pageFiles.ManageNewsPage;
 
@@ -24,11 +25,11 @@ public class ManageNewsPageTest extends BaseClassTest {
 		loginpage.sendPassword(password);
 		loginpage.signIn();
 		boolean isNavigatedToHomePage = loginpage.isHomePageDisplayed();
-		assertTrue(isNavigatedToHomePage,"After entering valid credentials in Login page user is not navigated to the home page");
+		assertTrue(isNavigatedToHomePage,Constant.homePageLogin);
 		manageNewsPage.pageVisibilityCheck();
 		String actualValueString = manageNewsPage.getBreadCrumbText();
 		String expectedValue = "News"; 
-		Assert.assertTrue(actualValueString.contains(expectedValue), "The breadcrumb text does not contain the expected value: " + expectedValue);
+		Assert.assertTrue(actualValueString.contains(expectedValue), Constant.breadCrumbsString + expectedValue);
 		manageNewsPage.saveDataTofile();
 	}
 }

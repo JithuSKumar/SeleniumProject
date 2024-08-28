@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constant;
 import pageFiles.HomePage;
 import pageFiles.LoginPage;
 
@@ -26,15 +27,15 @@ public class HomePageTest extends BaseClassTest {
 		loginpage.sendPassword(password);
 		loginpage.signIn();
 		boolean isNavigatedToHomePage = loginpage.isHomePageDisplayed();
-		assertTrue(isNavigatedToHomePage,"After entering valid credentials in Login page user is not navigated to the home page");
+		assertTrue(isNavigatedToHomePage,Constant.homePageLogin);
 		
 		String actual = homePage.getDashboardText();
 		String expected = "Dashboard";
-		Assert.assertEquals(actual, expected, "Home Page text displayed upon successful login.");
+		Assert.assertEquals(actual, expected,Constant.homePageDashboard);
 		
 		homePage.manageProdcutStatus();
 		boolean actualProductStatus = homePage.manageProdcutStatus();
-		Assert.assertEquals(actualProductStatus, false, "Element selection status: ");
+		Assert.assertEquals(actualProductStatus, false,Constant.homePageProductStatus );
 	}
 	
 	

@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constant;
 import pageFiles.LoginPage;
 import pageFiles.ManageCategoryPage;
 import pageFiles.ManageSubCategoryPage;
@@ -26,7 +27,7 @@ public class ManageSubCategoryPageTest extends BaseClassTest {
 		loginpage.signIn();
 		manageSubCategoryPage.subCategoryPageSelection();
 		boolean actualTableStatus = manageSubCategoryPage.subCategoryPageSelection();
-		Assert.assertEquals(actualTableStatus, true, "Sub Category table list is not displayed.");
+		Assert.assertEquals(actualTableStatus, true, Constant.subCategoryList);
 	}
  
 	@Test (priority = 2)

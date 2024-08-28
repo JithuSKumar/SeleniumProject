@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import constant.Constant;
 import pageFiles.LoginPage;
 import pageFiles.ManageContactPage;
 
@@ -22,12 +24,12 @@ public class ManageContactPageTest extends BaseClassTest {
 		loginpage.sendPassword(password);
 		loginpage.signIn();
 		boolean isNavigatedToHomePage = loginpage.isHomePageDisplayed();
-		assertTrue(isNavigatedToHomePage,"After entering valid credentials in Login page user is not navigated to the home page");
+		assertTrue(isNavigatedToHomePage,Constant.homePageLogin);
 		manageContactPage.pageVisibilityCheck();
 		manageContactPage.getBreadCrumbText();
 		String actualValueString = manageContactPage.getBreadCrumbText();
 		String expectedValue = "Contact";
-		Assert.assertTrue(actualValueString.contains(expectedValue), "The breadcrumb text does not contain the expected value: " + expectedValue);
+		Assert.assertTrue(actualValueString.contains(expectedValue),Constant.breadCrumbsString + expectedValue);
 		manageContactPage.saveDataTofile();
 	}
 	

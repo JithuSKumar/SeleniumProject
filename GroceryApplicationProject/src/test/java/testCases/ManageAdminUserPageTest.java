@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constant;
 import pageFiles.ManageAdminUserPage;
 import pageFiles.LoginPage;
 import utilities.ExcelUtilities;
@@ -26,7 +27,7 @@ public class ManageAdminUserPageTest extends BaseClassTest {
 		loginpage.sendPassword(password);
 		loginpage.signIn();
 		boolean isNavigatedToHomePage = loginpage.isHomePageDisplayed();
-		assertTrue(isNavigatedToHomePage,"After entering valid credentials in Login page user is not navigated to the home page");
+		assertTrue(isNavigatedToHomePage,Constant.homePageLogin);
 		adminUserCreationPage.adminUserListSelection();
 		adminUserCreationPage.fetchingTheFirstEntryinTable();
 		String newuserName = ExcelUtilities.getString(1, 0,"AdminUserCreation");
@@ -36,7 +37,7 @@ public class ManageAdminUserPageTest extends BaseClassTest {
 		adminUserCreationPage.fetchingTheFirstEntryinTable();
 		String actualValueString = adminUserCreationPage.fetchingTheFirstEntryinTable();
 		String expectedValue = ExcelUtilities.getString(1, 0,"AdminUserCreation");
-		Assert.assertEquals(actualValueString, expectedValue, "New User creation wasn't success.");
+		Assert.assertEquals(actualValueString, expectedValue, Constant.newUserCreationFail);
 	}
 	
 	@Test(priority = 2)
@@ -53,7 +54,7 @@ public class ManageAdminUserPageTest extends BaseClassTest {
 		adminUserCreationPage.fetchingTheFirstEntryinTable();
 		String actualValueString = adminUserCreationPage.fetchingTheFirstEntryinTable();
 		String expectedValue = ExcelUtilities.getString(1, 0,"AdminUserCreation");
-		Assert.assertEquals(actualValueString, expectedValue, "Created user didn't reflect in list");
+		Assert.assertEquals(actualValueString, expectedValue, Constant.userFilter);
 	}
 	
 	@Test(priority = 3)
@@ -68,7 +69,7 @@ public class ManageAdminUserPageTest extends BaseClassTest {
 		loginpage.signIn();
 		String actualValueString = adminUserCreationPage.getUserName();
 		String expectedValue = ExcelUtilities.getString(1, 0,"AdminUserCreation");
-		Assert.assertEquals(actualValueString, expectedValue, "The logged-in user does not match the created user.");
+		Assert.assertEquals(actualValueString, expectedValue, Constant.loggedinUser);
 	}
 	
 	@Test(priority = 4)
@@ -84,7 +85,7 @@ public class ManageAdminUserPageTest extends BaseClassTest {
 		adminUserCreationPage.deletingTheFirstUser();
 		String actualValueString = adminUserCreationPage.fetchingTheFirstEntryinTable();
 		String expectedValue = ExcelUtilities.getString(1, 0,"AdminUserCreation");
-		Assert.assertNotEquals(actualValueString, expectedValue, "New User deletion wasn't success.");
+		Assert.assertNotEquals(actualValueString, expectedValue, Constant.userDeletion);
 	}
 
 
