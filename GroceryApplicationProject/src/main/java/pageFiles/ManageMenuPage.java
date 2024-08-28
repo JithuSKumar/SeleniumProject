@@ -99,13 +99,13 @@ public class ManageMenuPage {
 		int count = (rowCountElement.size());
 		System.out.println(count);
 		System.out.println("search word: "+ "|-"+menuNameRandomString);
-		for (int i=1; i<=count;i++)
+		for (int i=0; i<count;i++)
 		{
 			if(rowCountElement.get(i).getText().equals(("|-"+menuNameRandomString)))
 			{
 				System.out.println("ele: "+ rowCountElement.get(i).getText());
 				System.out.println("entering loop");
-				String locatorString = "//table[@class='table table-bordered']//tbody//tr//td["+ (i) +"]";
+				String locatorString = "//table[@class='table table-bordered']//tbody//tr["+ (i+1) +"]//td";
 				element = driver.findElement(By.xpath(locatorString));
 				System.out.println("Value: "+ element.getText());
 				break;

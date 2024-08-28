@@ -18,7 +18,6 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.ITestResult;
 
 public class ExcelUtilities {
 	
