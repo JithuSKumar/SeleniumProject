@@ -18,7 +18,7 @@ public class ManageAdminUserPageTest extends BaseClassTest {
 	LoginPage loginpage;
 	ManageAdminUserPage adminUserCreationPage;
 
-	@Test(priority = 1)
+	@Test(priority = 1,groups = {"regression"})
 	public void verifyValidAdminUserCreation() throws InterruptedException, IOException
 	{
 		loginpage = new LoginPage(driver);

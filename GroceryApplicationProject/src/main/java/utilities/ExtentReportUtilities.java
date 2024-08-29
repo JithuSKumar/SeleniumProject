@@ -37,11 +37,11 @@ public class ExtentReportUtilities implements ITestListener {
 		reports.setSystemInfo("Project", "Grocery Web");
 		reports.setSystemInfo("PC Name", "My system");
 		reports.setSystemInfo("OS", "Windows 10");
-		reports.setSystemInfo("Test Done By", "Jsk");		
+		reports.setSystemInfo("Test Done By", "Jsk");
 		sparkReporter.config().setDocumentTitle("7rMart Report ");
 		sparkReporter.config().setReportName("Report Summary");
 		sparkReporter.config().setTheme(Theme.STANDARD);
-	}	
+	}
 
 	public void onTestSuccess(ITestResult result) {
 		test = reports.createTest(result.getName());
@@ -63,36 +63,37 @@ public class ExtentReportUtilities implements ITestListener {
 		}
 	}
 
-		public void onTestSkipped(ITestResult result) {
-			test = reports.createTest(result.getName());
-			test.log(Status.SKIP,
-					MarkupHelper.createLabel("Name of the skipped test case is : " + result.getName(), ExtentColor.YELLOW));
-		}
+	public void onTestSkipped(ITestResult result) {
+		test = reports.createTest(result.getName());
+		test.log(Status.SKIP,
+				MarkupHelper.createLabel("Name of the skipped test case is : " + result.getName(), ExtentColor.YELLOW));
+	}
 
-		public void onStart(ITestContext context) {
-			configureReport();
-			// Delete the testoutput folder before the suite starts
-			File testOutputFolder = new File("target/testoutput");
-			if (testOutputFolder.exists()) {
-				deleteFolder(testOutputFolder);
-			}
+	public void onStart(ITestContext context) {
+		configureReport();
+		// Delete the testoutput folder before the suite starts
+		File testOutputFolder = new File("target/testoutput");
+		if (testOutputFolder.exists()) {
+			deleteFolder(testOutputFolder);
 		}
-		private void deleteFolder(File folder) {
-			File[] files = folder.listFiles();
-			if (files != null) {
-				for (File file : files) {
-					if (file.isDirectory()) {
-						deleteFolder(file);
-					} else {
-						file.delete();
-					}
+	}
+
+	private void deleteFolder(File folder) {
+		File[] files = folder.listFiles();
+		if (files != null) {
+			for (File file : files) {
+				if (file.isDirectory()) {
+					deleteFolder(file);
+				} else {
+					file.delete();
 				}
 			}
-			folder.delete();
 		}
-
-		public void onFinish(ITestContext context) {
-			reports.flush();
-		}
-
+		folder.delete();
 	}
+
+	public void onFinish(ITestContext context) {
+		reports.flush();
+	}
+
+}

@@ -27,7 +27,6 @@ public class LoginPageTest extends BaseClassTest {
 		loginpage.sendPassword("admin");
 		screenShotUtilities.captureScreenShot(driver, userName);
 		loginpage.signIn();
-		screenShotUtilities.captureScreenShot(driver, "UserLoggedIn");
 		String actual = homePage.getDashboardText();
 		System.out.println("Successful Login: " + actual);
 		String expected = "Dashboard";
@@ -44,7 +43,6 @@ public class LoginPageTest extends BaseClassTest {
 		loginpage.signIn();
 		screenShotUtilities.captureFailureScreenShot(driver, userName);
 		String actual = loginpage.getErrorMessage();
-		System.out.println("Login Error Message: "+actual);
 		String expected = "Alert!";
 		Assert.assertEquals(actual, expected, Constant.loginPageStep_inValidDataLogin);
 	}

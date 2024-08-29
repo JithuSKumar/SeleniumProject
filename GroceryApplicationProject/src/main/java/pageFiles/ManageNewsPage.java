@@ -12,41 +12,40 @@ import utilities.ExcelUtilities;
 import utilities.GeneralUtilities;
 import utilities.WaitUtilities;
 
-public class ManageNewsPage 
-{
-WebDriver driver;
-	
+public class ManageNewsPage {
+	WebDriver driver;
+
 	GeneralUtilities generaUtility = new GeneralUtilities();
 	WaitUtilities waitUtility = new WaitUtilities();
 	ExcelUtilities excelutility = new ExcelUtilities();
 
-	public ManageNewsPage(WebDriver driver)
-	{
+	public ManageNewsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	
-	@FindBy(xpath = "//a//p[text()='Manage News']") WebElement manageNewsElement;
-	@FindBy(xpath = "//div[@class='card']") WebElement tableElement;
-	@FindBy(xpath = "//ol[@class='breadcrumb float-sm-right']")WebElement breadCrumbElement;
-	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr") List<WebElement> tableRows;
-	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']") WebElement newButtonElement;
-	
-	
-	public void pageVisibilityCheck()
-	{
+
+	@FindBy(xpath = "//a//p[text()='Manage News']")
+	WebElement manageNewsElement;
+	@FindBy(xpath = "//div[@class='card']")
+	WebElement tableElement;
+	@FindBy(xpath = "//ol[@class='breadcrumb float-sm-right']")
+	WebElement breadCrumbElement;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr")
+	List<WebElement> tableRows;
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
+	WebElement newButtonElement;
+
+	public void pageVisibilityCheck() {
 		manageNewsElement.click();
 	}
 
-	public String getBreadCrumbText() 
-	{
+	public String getBreadCrumbText() {
 		return breadCrumbElement.getText();
 	}
-	
-	public void saveDataTofile() throws IOException
-	{
+
+	public void saveDataTofile() throws IOException {
 		pageVisibilityCheck();
-		excelutility.saveTableContentsToNewExcelFile(tableRows, generaUtility.pageTitle(driver), this.getClass().getSimpleName() );
+		excelutility.saveTableContentsToNewExcelFile(tableRows, generaUtility.pageTitle(driver),
+				this.getClass().getSimpleName());
 	}
 }

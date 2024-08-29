@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.Select;
 
 public class GeneralUtilities {
 
+	String pageTitle;
+	
 	public String getTextElement(WebElement element) {
 		return element.getText();
 	}
@@ -73,11 +75,8 @@ public class GeneralUtilities {
 	
 	public String pageTitle(WebDriver driver)
     {
-		String pageTitle;
-    	return pageTitle = driver.getTitle().replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
+		return pageTitle = driver.getTitle().replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
     }
-
-	public static final String TESTDATAFILE = System.getProperty("user.dir") + "\\src\\test\\resources\\Properties\\TestData.xlsx";
-	public final String IMAGEFILEFORMANAGECATEGORYCATEGORYPAGE = System.getProperty("user.dir")+ "\\src\\test\\resources\\Properties\\gift.png";
+	
 
 }

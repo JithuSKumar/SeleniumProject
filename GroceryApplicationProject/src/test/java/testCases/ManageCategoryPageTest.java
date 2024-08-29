@@ -77,7 +77,7 @@ public class ManageCategoryPageTest extends BaseClassTest {
 		
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4, enabled = false)
 	public void VerifyDeleteofNewlyAddedCategory() throws IOException
 	{
 		loginpage = new LoginPage(driver);

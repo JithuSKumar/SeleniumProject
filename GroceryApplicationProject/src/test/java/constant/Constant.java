@@ -20,5 +20,4 @@ public class Constant
 	public static final String manageMenuList = "Manage Menu table list is not displayed.";
 	public static final String subCategoryList = "Sub Category table list is not displayed.";
 	
-	
 }
