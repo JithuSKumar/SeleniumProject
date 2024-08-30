@@ -17,6 +17,18 @@ public class ManageSubCategoryPageTest extends BaseClassTest {
 	ManageSubCategoryPage manageSubCategoryPage;
 	ManageCategoryPage manageCategoryPage;
 	
+	public String getCreatedCategoryNameString()
+	{	
+		return createdCategoryNameString;
+	}
+
+	public void setCreatedCategoryNameString(String createdCategoryNameString)
+	{
+		this.createdCategoryNameString = createdCategoryNameString;
+	}
+
+	String createdCategoryNameString;
+	
 	@Test (priority = 1)
 	public void verifyIfCategoryListisLoaded() throws IOException
 	{
@@ -40,9 +52,13 @@ public class ManageSubCategoryPageTest extends BaseClassTest {
 		loginpage.sendPassword(password);
 		loginpage.signIn();
 		manageCategoryPage.categoryPageSelection();	
-		String CategoryType = manageCategoryPage.fetchingTheFirstEntryinTable();
+		String CategoryType = manageCategoryPage.fetchingTheFirstEntryinTable();//searchNewlyAddedCategoryVisibility(getCreatedCategoryNameString());
 		manageSubCategoryPage.subCategoryPageSelection();
 		String subCategoryName = ExcelUtilities.getString(1, 0,"ManageCategory&Subcategory");
 		manageSubCategoryPage.creationOfNewSubCategory(subCategoryName, CategoryType);
+		manageSubCategoryPage.subCategoryPageSelection();
+		String actualValueString = manageSubCategoryPage.fetchingTheFirstEntryinTable();
+		String expectedValue = manageSubCategoryPage.getCategoryNameString();
+		Assert.assertEquals(actualValueString, expectedValue, Constant.newCategoryFail);
 	}
 }

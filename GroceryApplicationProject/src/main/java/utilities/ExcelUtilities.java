@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import utilities.FilePaths;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -19,6 +20,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+@SuppressWarnings("unused")
 public class ExcelUtilities {
 
 	public static XSSFWorkbook wb;
@@ -30,7 +32,8 @@ public class ExcelUtilities {
 		try {
 			f = new FileInputStream(file_path);
 
-		} catch (FileNotFoundException e) {
+		}
+		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		try {

@@ -17,6 +17,7 @@ public class ManageSubCategoryPage {
 	FilePaths filepath = new FilePaths();
 	WaitUtilities waitUtility = new WaitUtilities();
 	FileUploadUtilities fileUploadUtility = new FileUploadUtilities();
+	String categoryNameRandomString;
 
 	public ManageSubCategoryPage(WebDriver driver) {
 		this.driver = driver;
@@ -39,6 +40,8 @@ public class ManageSubCategoryPage {
 	WebElement saveElement;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement successMessageElement;
+	@FindBy(xpath = "//tbody//tr[1]/td[1]")
+	WebElement firstCategoryInListElement;
 
 	public boolean subCategoryPageSelection() {
 		waitUtility.waitForElementClickable(driver, subCategoryElement);
@@ -47,15 +50,29 @@ public class ManageSubCategoryPage {
 	}
 
 	public void creationOfNewSubCategory(String subCategoryName, String CategoryType) {
+		setRandomSubCategoryName(subCategoryName);
 		subCategoryElement.click();
 		newSubCategoryCreationElement.click();
 		waitUtility.waitForElement(driver, categoryDropdownElement);
 		generaUtility.selectDropdownbyText(categoryDropdownElement, CategoryType);
-		newSubCategoryNameElement.sendKeys(subCategoryName);
+		newSubCategoryNameElement.sendKeys(getCategoryNameString());
 		fileUploadUtility.fileUploadUsingSendKeys(subCategoryImageElement,
 				filepath.IMAGEFILEFORMANAGECATEGORYCATEGORYPAGE);
 		saveElement.click();
 		waitUtility.waitForElement(driver, successMessageElement);
 
+	}
+
+	public void setRandomSubCategoryName(String subCategoryName) {
+		this.categoryNameRandomString = subCategoryName + generaUtility.generateCurrentDateAndTime();
+	}
+
+	public String getCategoryNameString() {
+		return categoryNameRandomString;
+	}
+
+	public String fetchingTheFirstEntryinTable() {
+		String firstElementValueString = firstCategoryInListElement.getText();
+		return firstElementValueString;
 	}
 }

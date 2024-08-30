@@ -18,7 +18,7 @@ public class ManageAdminUserPageTest extends BaseClassTest {
 	LoginPage loginpage;
 	ManageAdminUserPage adminUserCreationPage;
 
-	@Test(priority = 1,groups = {"regression"})
+	@Test(priority = 1)
 	public void verifyValidAdminUserCreation() throws InterruptedException, IOException
 	{
 		loginpage = new LoginPage(driver);
@@ -40,7 +40,7 @@ public class ManageAdminUserPageTest extends BaseClassTest {
 		Assert.assertEquals(actualValueString, expectedValue, Constant.newUserCreationFail);
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2,groups = {"regression"})
 	public void verifyFilteringofNewUser() throws InterruptedException, IOException
 	{
 		loginpage = new LoginPage(driver);

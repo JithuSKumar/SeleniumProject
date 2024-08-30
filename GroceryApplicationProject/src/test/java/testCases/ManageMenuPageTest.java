@@ -24,7 +24,7 @@ public class ManageMenuPageTest extends BaseClassTest{
 	String colourValue =  ExcelUtilities.getString(1, 6,"ManageMenu");
 	int menuOrder = ExcelUtilities.getInt(1, 7,"ManageMenu");
 	
-	@Test (priority = 1)
+	@Test (priority = 1,groups = {"regression"})
 	public void verifyIfManageMenuListIsLoaded() throws IOException {
 
 		loginpage = new LoginPage(driver);
@@ -50,7 +50,7 @@ public class ManageMenuPageTest extends BaseClassTest{
 		manageMenuPage.creatingNewMenu(menuName, parentMenu, url, favIcon, tableValue, fileValue, colourValue,menuOrder);
 	}
 
-	@Test (priority = 3)
+	@Test (priority = 3,groups = {"regression"})
 	public void verifyIfNewlyCreatedElementInList() throws IOException
 	{
 		loginpage = new LoginPage(driver);

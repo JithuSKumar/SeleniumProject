@@ -15,7 +15,7 @@ public class ManageContactPageTest extends BaseClassTest {
 	LoginPage loginpage;
 	ManageContactPage manageContactPage;
 
-	@Test(priority = 1)
+	@Test(priority = 1,groups = {"regression"})
 	public void verifyVManageContactPageLoad() throws InterruptedException, IOException
 	{
 		loginpage = new LoginPage(driver);

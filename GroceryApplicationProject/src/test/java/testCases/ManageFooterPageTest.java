@@ -15,7 +15,7 @@ public class ManageFooterPageTest extends BaseClassTest {
 	LoginPage loginpage;
 	ManageFooterPage manageFooterPage;
 
-	@Test(priority = 1)
+	@Test(priority = 1,groups = {"regression"})
 	public void verifyVManageFooterPageLoad() throws InterruptedException, IOException
 	{
 		loginpage = new LoginPage(driver);
